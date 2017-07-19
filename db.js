@@ -1,7 +1,10 @@
 var Sequelize = require("sequelize");
-var sequelize = new Sequelize("workoutlog", "postgres", "1postgresql1", {
-	host: "localhost",
-	dialect: "postgres"
+// var sequelize = new Sequelize("workoutlog", "postgres", "1postgresql1", {
+// 	host: "localhost",
+// 	dialect: "postgres"
+// });
+var sequelize = new Sequelize(process.env.DATABASE_URL || 'postgres://postgres:1postgresql1@localhost:5432/workoutlog', {
+	dialect: 'postgres'
 });
 
 sequelize.authenticate().then(

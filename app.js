@@ -2,6 +2,7 @@ require("dotenv").config();     // Only thing inside .env file is:   JWT_SECRET=
 
 var express = require("express");
 var app = express();
+var http = require('http').Server(app);
 var bodyParser = require("body-parser");
 var sequelize = require("./db.js");
 var User = sequelize.import("./models/user");
@@ -59,10 +60,12 @@ app.use("/api/test", function(req, res) {
 
 
 
-app.listen(3000, function() {
-	console.log("app is listening on 3000");
+// app.listen(3000, function() {
+// 	console.log("app is listening on 3000");
+// });
+http.listen(process.env.PORT || 3000, function() {
+	console.log('app is listening on port 3000...');
 });
-
 
 
 
